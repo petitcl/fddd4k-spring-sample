@@ -9,6 +9,8 @@ data class Money(
 ) {
     companion object {
         fun of(amount: BigDecimal, currency: Currency): Money = Money(amount, currency)
-        fun of(amount: Float, currency: Currency): Money = Money(amount.toBigDecimal(), currency)
+        fun of(amount: Double, currency: Currency): Money = Money(amount.toBigDecimal(), currency)
+        fun of(amount: Double, currencyCode: String): Money
+            = Money(amount.toBigDecimal(), Currency.getInstance(currencyCode))
     }
 }

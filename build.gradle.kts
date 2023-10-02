@@ -16,13 +16,23 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	// web
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	// core
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("io.arrow-kt:arrow-core:1.2.1")
+
+	// infrastructure
+//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.44.0")
 	runtimeOnly("com.h2database:h2")
+
+	// test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.kotest:kotest-assertions-core:5.7.2")
 }
 
 tasks.withType<KotlinCompile> {

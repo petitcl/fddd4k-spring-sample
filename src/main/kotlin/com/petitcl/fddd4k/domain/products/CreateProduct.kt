@@ -12,7 +12,7 @@ data class ProductCreatedEvent(
 ) : DomainEvent
 
 data class CreateProductCommand(
-    val productName: ProductName,
+    val name: ProductName,
     val description: String,
     val price: Money,
 )
@@ -21,14 +21,14 @@ fun createProduct(command: CreateProductCommand): DomainOperationResult<Product>
     val productId = ProductId.new()
     val product = Product(
         productId = productId,
-        productName = command.productName,
+        productName = command.name,
         description = command.description,
         price = command.price,
     )
     val events = listOf(
         ProductCreatedEvent(
             productId = productId,
-            productName = command.productName,
+            productName = command.name,
             description = command.description,
             price = command.price,
         )
